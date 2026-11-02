@@ -1,20 +1,7 @@
-<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5eee2"><link rel="manifest" href="manifest.webmanifest">
-<title>Дворцовая жизнь</title><link rel="stylesheet" href="styles.css">
-</head><body><main class="app">
-<header><div class="eyebrow">ДВОРЦОВАЯ ХРОНИКА</div><h1>Жизнь во дворце</h1><p class="sub">Твоя история начинается с выбранной даты.</p></header>
-<section id="setup" class="panel">
-<h2>Выбери дату начала</h2><p>Прокручивай колёсики, как на iPhone.</p>
-<div class="wheels"><label>День<select id="day"></select></label><label>Месяц<select id="month"></select></label><label>Год<select id="year"></select></label></div>
-<button id="start">Начать историю</button>
-</section>
-<section id="game" class="panel hidden">
-<div class="topline"><span id="dateLabel"></span><span id="progress">Выбор 1 из 3</span></div>
-<h2 id="eventTitle"></h2><p id="story" class="story"></p><div id="choices" class="choices"></div>
-</section>
-<section id="recap" class="panel hidden"><div class="eyebrow">КОНЕЦ ДНЯ</div><h2>Итоги дня</h2><div id="recapText" class="story"></div><button id="nextDay">Начать следующий день</button></section>
-<section class="panel diary"><h2>Дневник</h2><div id="diaryList" class="muted">Здесь появятся записи после первого дня.</div></section>
-<footer>Историческая атмосфера, вымышленная история.</footer></main><script src="app.js"></script></body></html>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#eadccf"><link rel="manifest" href="manifest.webmanifest"><title>Дворцовая жизнь</title><link rel="stylesheet" href="styles.css"></head><body>
+<header class="mast"><span>✦ ДВОРЦОВАЯ ХРОНИКА ✦</span><h1>Дворцовая жизнь</h1><p>Твоя история в османском дворце</p></header>
+<nav class="tabs"><button data-tab="story" class="active">История</button><button data-tab="person">Персонаж</button><button data-tab="diary">Дневник</button><button data-tab="settings">Настройки</button></nav>
+<main><section id="story" class="screen active"><div class="datebar"><label>Дата начала <select id="year"></select></label><label>Месяц <select id="month"></select></label><label>День <select id="day"></select></label><button id="begin">Начать день</button></div><div class="card"><div class="small" id="dateNow">1299 год</div><h2 id="sceneTitle">Добро пожаловать во дворец</h2><p id="sceneText">Создай персонажа и начни свою историю.</p><div id="actions" class="actions"></div><div class="meter"><span id="dayProgress"></span></div><div class="small" id="progressText">День ещё не начат</div></div><div id="report" class="card hidden"><h2>Хроника дня</h2><div id="reportText"></div><button id="next">Следующий день</button></div></section>
+<section id="person" class="screen"><div class="card"><h2>Твой персонаж</h2><label>Имя <input id="name" maxlength="24" value="Айше"></label><label>Положение<select id="rank"><option>Новая служанка</option><option>Фрейлина</option><option>Дочь знатного рода</option><option>Жительница дворца</option></select></label><label>Внешность<select id="look"><option>Тёмные волосы, карие глаза</option><option>Русые волосы, зелёные глаза</option><option>Чёрные волосы, серые глаза</option><option>Каштановые волосы, голубые глаза</option></select></label><label>Причёска<select id="hair"><option>Длинные распущенные волосы</option><option>Коса с лентой</option><option>Собранные волосы</option></select></label><label>Одежда<select id="dress"><option>Платье цвета граната</option><option>Нежно-голубой кафтан</option><option>Кремовое платье с вышивкой</option><option>Зелёный шёлковый наряд</option></select></label><label>Черта характера<select id="trait"><option>Любознательность</option><option>Доброта</option><option>Осторожность</option><option>Амбициозность</option></select></label><button id="savePerson">Сохранить персонажа</button><p id="personMsg" class="small"></p></div><div class="card"><h2>Состояние</h2><p>Настроение <b id="mood">Спокойное</b></p><p>Репутация <b id="rep">0</b></p><p>Отношения <b id="rel">0</b></p><p>Монеты <b id="coins">20</b></p></div></section>
+<section id="diary" class="screen"><div class="card"><h2>Дневник и календарь</h2><div id="diaryList">Пока записей нет.</div></div></section>
+<section id="settings" class="screen"><div class="card"><h2>Настройки истории</h2><label>Объём текста<select id="length"><option value="long">Подробный</option><option value="short">Краткий</option></select></label><label><input type="checkbox" id="autosave" checked> Автосохранение в этом браузере</label><button id="reset">Начать заново</button><p class="small">Дата начала по умолчанию — 1299 год, условная дата основания Османской империи.</p></div></section></main><footer>Вымышленная история в исторической атмосфере. Все персонажи вымышлены.</footer><script src="app.js"></script></body></html>
