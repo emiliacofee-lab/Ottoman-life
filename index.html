@@ -46,7 +46,7 @@
             <label>Цвет глаз<select id="eyes"><option>Карие</option><option>Голубые</option><option>Зелёные</option><option>Серые</option><option>Ореховые</option></select></label>
             <label>Цвет волос<select id="hair"><option>Тёмно-каштановые</option><option>Чёрные</option><option>Русые</option><option>Рыжие</option><option>Светлые</option></select></label>
           </div>
-          <label>Характер<textarea id="personality" rows="2" placeholder="Например: наблюдательная, гордая, терпеливая"></textarea></label>
+          <div class="muted personality-note">Характер будет постепенно формироваться из твоих решений и поступков.</div>
           <label>Цветовая палитра</label>
           <div class="palette" id="palette">
             <button class="swatch selected" data-color="#174c46" style="--swatch:#174c46" aria-label="Изумрудный"></button>
@@ -55,6 +55,10 @@
             <button class="swatch" data-color="#e8ddc7" style="--swatch:#e8ddc7" aria-label="Кремовый"></button>
             <button class="swatch" data-color="#245b78" style="--swatch:#245b78" aria-label="Синий"></button>
             <button class="swatch" data-color="#78628e" style="--swatch:#78628e" aria-label="Лиловый"></button>
+            <button class="swatch" data-color="#6b7f3a" style="--swatch:#6b7f3a" aria-label="Оливковый"></button>
+            <button class="swatch" data-color="#b87945" style="--swatch:#b87945" aria-label="Терракотовый"></button>
+            <button class="swatch" data-color="#7f263f" style="--swatch:#7f263f" aria-label="Вишнёвый"></button>
+            <button class="swatch" data-color="#8a9ca5" style="--swatch:#8a9ca5" aria-label="Серо-голубой"></button>
           </div>
           <label>Дата начала истории</label>
           <div class="three-col">
@@ -72,11 +76,12 @@
           <div><div class="eyebrow" id="dayLabel">ДЕНЬ 1</div><h2 id="dateLabel">15 января 1550</h2></div>
           <button class="pill-button" id="diaryBtn">Дневник</button>
         </div>
-        <div class="game-art"><div class="arch">☾</div><div class="art-caption">ПОКОИ ДВОРЦА</div></div>
+        <div class="game-art" id="gameArt"><div class="arch">☾</div><div class="art-caption">ПОКОИ ДВОРЦА</div></div>
         <div class="panel story-panel">
           <div class="eyebrow">ТВОЯ ИСТОРИЯ</div>
           <h3 id="storyTitle">Утро во дворце</h3>
           <p id="storyText">Утренний свет ложится на узоры изникских изразцов. За резными дверями начинается новый день, и во дворце уже слышны шаги служанок.</p>
+          <div class="story-meta" id="storyMeta">УТРО · СОБЫТИЕ 1</div>
           <div class="choices" id="choices">
             <button class="choice">Осмотреть покои и узнать, что изменилось за ночь.</button>
             <button class="choice">Позвать служанку и расспросить о событиях во дворце.</button>
