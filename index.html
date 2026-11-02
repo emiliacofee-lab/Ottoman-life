@@ -1,132 +1,20 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#173f3b">
-  <meta name="description" content="Османская история — интерактивный симулятор жизни при дворце.">
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" href="./icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css">
-  <title>Османская история</title>
-</head>
-<body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div class="brand-mark">✧</div>
-      <div><div class="eyebrow">ИНТЕРАКТИВНЫЙ СИМУЛЯТОР</div><div class="brand">Османская история</div></div>
-      <button class="icon-button" id="installBtn" hidden aria-label="Установить игру">↓</button>
-    </header>
-
-    <main id="app">
-      <section class="screen active" id="homeScreen">
-        <div class="hero">
-          <div class="hero-kicker">ДВОРЕЦ • СУДЬБА • ВЫБОР</div>
-          <h1>Твоя история<br><em>начинается здесь</em></h1>
-          <p>Создай героиню и проживи собственную историю в вымышленном османском дворце.</p>
-          <div class="hero-ornament">❧ ❧ ❧</div>
-        </div>
-        <div class="menu-list">
-          <button class="menu-button primary" data-screen="creatorScreen"><span>Начать новую историю</span><b>↗</b></button>
-          <button class="menu-button" id="continueBtn"><span>Продолжить историю</span><b>→</b></button>
-          <button class="menu-button" data-screen="rulesScreen"><span>Правила и информация</span><b>→</b></button>
-          <button class="menu-button" data-screen="settingsScreen"><span>Настройки</span><b>→</b></button>
-        </div>
-        <p class="small-note" id="saveStatus">Сохранения хранятся на этом устройстве в прототипе.</p>
-      </section>
-
-      <section class="screen" id="creatorScreen">
-        <div class="section-heading"><button class="back" data-screen="homeScreen">←</button><div><div class="eyebrow">НОВАЯ ИСТОРИЯ · 01</div><h2>Создание героини</h2></div></div>
-        <div class="panel">
-          <div class="preview-avatar" id="avatarPreview">ف</div>
-          <p class="muted center">Здесь появится портрет героини. В этой первой версии настраиваются основные данные; генерация портретов подключается отдельным этапом.</p>
-          <label>Имя героини<input id="heroName" maxlength="32" placeholder="Например, Фирузе"></label>
-          <label>Национальность<input id="nationality" maxlength="32" placeholder="Например, гречанка"></label>
-          <div class="two-col">
-            <label>Цвет глаз<select id="eyes"><option>Карие</option><option>Голубые</option><option>Зелёные</option><option>Серые</option><option>Ореховые</option></select></label>
-            <label>Цвет волос<select id="hair"><option>Тёмно-каштановые</option><option>Чёрные</option><option>Русые</option><option>Рыжие</option><option>Светлые</option></select></label>
-          </div>
-          <div class="muted personality-note">Характер будет постепенно формироваться из твоих решений и поступков.</div>
-          <label>Цветовая палитра</label>
-          <div class="palette" id="palette">
-            <button class="swatch selected" data-color="#174c46" style="--swatch:#174c46" aria-label="Изумрудный"></button>
-            <button class="swatch" data-color="#9d3445" style="--swatch:#9d3445" aria-label="Бордовый"></button>
-            <button class="swatch" data-color="#d6b56d" style="--swatch:#d6b56d" aria-label="Золотой"></button>
-            <button class="swatch" data-color="#e8ddc7" style="--swatch:#e8ddc7" aria-label="Кремовый"></button>
-            <button class="swatch" data-color="#245b78" style="--swatch:#245b78" aria-label="Синий"></button>
-            <button class="swatch" data-color="#78628e" style="--swatch:#78628e" aria-label="Лиловый"></button>
-            <button class="swatch" data-color="#6b7f3a" style="--swatch:#6b7f3a" aria-label="Оливковый"></button>
-            <button class="swatch" data-color="#b87945" style="--swatch:#b87945" aria-label="Терракотовый"></button>
-            <button class="swatch" data-color="#7f263f" style="--swatch:#7f263f" aria-label="Вишнёвый"></button>
-            <button class="swatch" data-color="#8a9ca5" style="--swatch:#8a9ca5" aria-label="Серо-голубой"></button>
-          </div>
-          <label>Дата начала истории</label>
-          <div class="three-col">
-            <label class="compact">Число<input id="day" type="number" min="1" max="31" value="15"></label>
-            <label class="compact">Месяц<select id="month"><option value="0">Январь</option><option value="1">Февраль</option><option value="2">Март</option><option value="3">Апрель</option><option value="4">Май</option><option value="5">Июнь</option><option value="6">Июль</option><option value="7">Август</option><option value="8">Сентябрь</option><option value="9">Октябрь</option><option value="10">Ноябрь</option><option value="11">Декабрь</option></select></label>
-            <label class="compact">Год<input id="year" type="number" min="1000" max="2200" value="1550"></label>
-          </div>
-          <label>Начало истории<select id="origin"><option>Новая наложница, прибывшая во дворец</option><option>Наложница, уже несколько лет живущая в гареме</option><option>Дочь султана</option><option>Служанка, желающая изменить своё положение</option><option>Девушка из знатной семьи</option><option>Случайная судьба</option></select></label>
-          <button class="wide-button" id="createBtn">Создать историю <span>✦</span></button>
-        </div>
-      </section>
-
-      <section class="screen" id="gameScreen">
-        <div class="game-header">
-          <div><div class="eyebrow" id="dayLabel">ДЕНЬ 1</div><h2 id="dateLabel">15 января 1550</h2></div>
-          <button class="pill-button" id="diaryBtn">Дневник</button>
-        </div>
-        <div class="game-art" id="gameArt"><div class="arch">☾</div><div class="art-caption">ПОКОИ ДВОРЦА</div></div>
-        <div class="panel story-panel">
-          <div class="eyebrow">ТВОЯ ИСТОРИЯ</div>
-          <h3 id="storyTitle">Утро во дворце</h3>
-          <p id="storyText">Утренний свет ложится на узоры изникских изразцов. За резными дверями начинается новый день, и во дворце уже слышны шаги служанок.</p>
-          <div class="story-meta" id="storyMeta">УТРО · СОБЫТИЕ 1</div>
-          <div class="choices" id="choices">
-            <button class="choice">Осмотреть покои и узнать, что изменилось за ночь.</button>
-            <button class="choice">Позвать служанку и расспросить о событиях во дворце.</button>
-            <button class="choice">Отправиться в сад, чтобы начать утро на свежем воздухе.</button>
-          </div>
-          <button class="end-day" id="endDayBtn">Завершить день</button>
-        </div>
-        <div class="quick-stats">
-          <div><span>♡</span><small>Здоровье</small><b>Хорошее</b></div>
-          <div><span>☼</span><small>Настроение</small><b>Спокойное</b></div>
-          <div><span>◷</span><small>Усталость</small><b>Низкая</b></div>
-        </div>
-      </section>
-
-      <section class="screen" id="diaryScreen">
-        <div class="section-heading"><button class="back" data-screen="gameScreen">←</button><div><div class="eyebrow">ЗАПИСИ</div><h2>Дневник</h2></div></div>
-        <div class="panel"><div id="diaryEntries" class="diary-entries"><p class="muted">Здесь будут появляться записи о прошедших днях.</p></div></div>
-      </section>
-
-      <section class="screen" id="rulesScreen">
-        <div class="section-heading"><button class="back" data-screen="homeScreen">←</button><div><div class="eyebrow">ПАМЯТКА</div><h2>Правила игры</h2></div></div>
-        <div class="panel prose">
-          <h3>Твоя история — твои решения</h3>
-          <p>Каждый день приносит события и выборы. У каждого события будет три варианта действий, а последствия будут зависеть от решений, отношений и обстоятельств.</p>
-          <h3>Османская атмосфера</h3>
-          <p>Мир вдохновлён историческим бытом Османской империи. Персонажи и сюжет вымышленные; детали эпохи будут уточняться при дальнейшей разработке.</p>
-          <h3>Сохранения</h3>
-          <p>В этом прототипе прогресс сохраняется локально в браузере. Облачная синхронизация появится на следующем этапе.</p>
-        </div>
-      </section>
-
-      <section class="screen" id="settingsScreen">
-        <div class="section-heading"><button class="back" data-screen="homeScreen">←</button><div><div class="eyebrow">ПАРАМЕТРЫ</div><h2>Настройки</h2></div></div>
-        <div class="panel">
-          <label class="setting-row">Распространение некоторых болезней<input type="checkbox" id="diseaseToggle" checked></label>
-          <label class="setting-row">Беременность<input type="checkbox" id="pregnancyToggle" checked></label>
-          <label class="setting-row">Выкидыши<input type="checkbox" id="miscarriageToggle" checked></label>
-          <label class="setting-row">Осложнения беременности<input type="checkbox" id="complicationsToggle" checked></label>
-          <label class="setting-row">Преждевременные роды<input type="checkbox" id="prematureToggle" checked></label>
-          <p class="muted">Настройки сохраняются на этом устройстве. События здоровья пока являются частью плана разработки и ещё не подключены к игровой логике.</p>
-        </div>
-      </section>
-    </main>
-    <footer>ВЫМЫШЛЕННЫЙ МИР · ОСМАНСКАЯ ЭСТЕТИКА</footer>
-  </div>
-  <script src="./app.js"></script>
-</body>
-</html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5eee2"><link rel="manifest" href="manifest.webmanifest">
+<title>Дворцовая жизнь</title><link rel="stylesheet" href="styles.css">
+</head><body><main class="app">
+<header><div class="eyebrow">ДВОРЦОВАЯ ХРОНИКА</div><h1>Жизнь во дворце</h1><p class="sub">Твоя история начинается с выбранной даты.</p></header>
+<section id="setup" class="panel">
+<h2>Выбери дату начала</h2><p>Прокручивай колёсики, как на iPhone.</p>
+<div class="wheels"><label>День<select id="day"></select></label><label>Месяц<select id="month"></select></label><label>Год<select id="year"></select></label></div>
+<button id="start">Начать историю</button>
+</section>
+<section id="game" class="panel hidden">
+<div class="topline"><span id="dateLabel"></span><span id="progress">Выбор 1 из 3</span></div>
+<h2 id="eventTitle"></h2><p id="story" class="story"></p><div id="choices" class="choices"></div>
+</section>
+<section id="recap" class="panel hidden"><div class="eyebrow">КОНЕЦ ДНЯ</div><h2>Итоги дня</h2><div id="recapText" class="story"></div><button id="nextDay">Начать следующий день</button></section>
+<section class="panel diary"><h2>Дневник</h2><div id="diaryList" class="muted">Здесь появятся записи после первого дня.</div></section>
+<footer>Историческая атмосфера, вымышленная история.</footer></main><script src="app.js"></script></body></html>
